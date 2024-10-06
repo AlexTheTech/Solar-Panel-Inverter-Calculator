@@ -1,0 +1,296 @@
+/* styles.css - Updated to improve formatting for Results section in Calculator Page */
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #f7e6a2, #f0c929);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+nav {
+    width: 100%;
+    background-color: rgba(230, 126, 34, 0.9); /* Semi-transparent background */
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transition: background-color 0.5s ease;
+}
+
+nav:hover {
+    background-color: #e67e22; /* Solid color when hovered */
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #f39c12;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    max-width: 1000px;
+    width: 90%;
+    margin-top: 140px;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: #e67e22;
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+h2 {
+    color: #d35400;
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e67e22;
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: #e67e22;
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* List Styling */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul li {
+    background: #fff4e6;
+    border-left: 4px solid #e67e22;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ul li strong {
+    color: #d35400;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #e67e22;
+    color: #fff;
+}
+
+thead th {
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f7f1d1;
+}
+
+tbody td {
+    padding: 15px;
+    font-size: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Feature Boxes Styling */
+.features .feature-item {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.features .feature-item:hover {
+    transform: translateY(-10px);
+}
+
+.features .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e67e22;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.features .button:hover {
+    background-color: #d35400;
+}
+
+/* Add Icon Elements */
+li::before {
+    content: '\2600'; /* Sun icon */
+    font-size: 20px;
+    margin-right: 10px;
+    color: #f39c12;
+}
+
+/* Table Caption Styling */
+table caption {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d35400;
+    padding: 10px;
+}
+
+/* Results Section Styling */
+.output {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.output p {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #fdf2e9;
+    border-radius: 8px;
+    border-left: 4px solid #e67e22;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    ul li {
+        font-size: 14px;
+    }
+
+    thead th, tbody td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Sun-like rotating background elements */
+.sun-circle {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f9d423, #ff4e50);
+    top: -75px;
+    right: -75px;
+    opacity: 0.8;
+    animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Small sun-rays */
+.sun-rays {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 8px dashed #f39c12;
+    top: -100px;
+    left: -100px;
+    opacity: 0.5;
+    animation: rotate 12s linear infinite reverse;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f1c40f, transparent);
+    top: -40px;
+    left: -40px;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+/* Extra styles to give solar feel */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ffecb3, transparent);
+    animation: pulse 10s infinite ease-in-out;
+    z-index: -1;
+}
+
+body::before {
+    top: -300px;
+    left: -300px;
+}
+
+body::after {
+    bottom: -300px;
+    right: -300px;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}

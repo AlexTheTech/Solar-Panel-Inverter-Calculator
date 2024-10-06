@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Graphs</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                });
+        });
+    </script>
+    <div class="container">
+        <h1>Solar Data Analysis</h1>
+        <p>This page provides an in-depth analysis of solar energy data through various interactive graphs. It includes visualizations of monthly solar insolation versus temperature, energy production by different panel types, and total system efficiency throughout the year. The purpose of this page is to help users understand how environmental factors and solar panel characteristics influence solar power generation. By interpreting these graphs, users can make informed decisions about optimizing their solar energy systems for better performance and efficiency.</p>
+        
+        <!-- Monthly Insolation vs Temperature Graph -->
+        <div class="chart-container">
+            <h2>Monthly Insolation vs Temperature</h2>
+            <p>This graph illustrates the relationship between the average daily solar insolation and the average monthly temperature. Solar insolation measures the amount of solar radiation received per square meter per day, while temperature data provides insights into the environmental conditions. This graph helps in understanding how both factors fluctuate throughout the year and how temperature might impact solar panel efficiency.</p>
+            <canvas id="insolationTempChart"></canvas>
+        </div>
+
+        <!-- Energy Production per Panel Type per Month -->
+        <div class="chart-container">
+            <h2>Energy Production per Panel Type per Month</h2>
+            <p>This graph presents the monthly energy production for different solar panel types (SLX170, SLX175, SLX180). It allows for a comparison of panel performance over the months, showcasing how seasonal variations impact each type differently. By analyzing this, users can determine the most efficient panel type for their specific needs and conditions.</p>
+            <canvas id="energyProductionChart"></canvas>
+        </div>
+
+        <!-- Total System Efficiency Over the Year -->
+        <div class="chart-container">
+            <h2>Total System Efficiency Over the Year</h2>
+            <p>The total system efficiency graph shows the overall efficiency of the solar panel system throughout the year. Efficiency is influenced by factors such as temperature, shading, and general system losses. This graph helps to evaluate how well the solar system is performing and to identify periods where efficiency drops, allowing for better maintenance planning or system adjustments to maximize performance.</p>
+            <canvas id="systemEfficiencyChart"></canvas>
+        </div>
+    </div>
+
+    <script src="graphs.js"></script>
+</body>
+</html>

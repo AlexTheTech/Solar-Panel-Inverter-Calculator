@@ -1,0 +1,39 @@
+<!-- Updated navbar.html -->
+<nav id="navbar" class="hidden-navbar">
+    <a href="index.html">Home</a> |
+    <a href="calculator.html">Calculator</a> |
+    <a href="solar_graphs.html">Graphs Page</a> |
+    <a href="solar_specs.html">Specifications Page</a>
+</nav>
+
+<style>
+  /* New CSS for hiding the navbar until hover */
+  #navbar.hidden-navbar {
+      position: fixed;
+      top: -30px; /* Move navbar out of view except a small part */
+      left: 0;
+      width: 100%;
+      background-color: rgba(230, 126, 34, 0.9);
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: top 0.5s ease;
+      z-index: 100;
+  }
+
+  #navbar.hidden-navbar:hover {
+      top: 0; /* Slide down fully when hovered */
+  }
+
+  #navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s ease;
+  }
+
+  #navbar a:hover {
+      color: #f39c12;
+  }
+</style>

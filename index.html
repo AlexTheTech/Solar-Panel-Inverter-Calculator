@@ -1,0 +1,58 @@
+<!-- Updated index.html to have horizontal feature boxes -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Solar Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* CSS to make feature boxes align horizontally */
+        .features {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .feature-item {
+            flex: 1 1 calc(30% - 20px); /* Adjust width and space between items */
+            margin: 10px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                });
+        });
+    </script>
+    <div class="container">
+        <h1>Welcome to the Solar Project</h1>
+        <p>Explore our tools to calculate solar panel requirements, analyze solar energy graphs, and learn more about solar specifications to maximize your energy efficiency.</p>
+
+        <div class="features">
+            <div class="feature-item">
+                <h2>Solar Calculator</h2>
+                <p>Determine the number of panels and inverters needed to meet your energy needs.</p>
+                <a href="calculator.html" class="button">Go to Calculator</a>
+            </div>
+            <div class="feature-item">
+                <h2>Solar Graphs</h2>
+                <p>Visualize solar energy trends and understand system efficiency throughout the year.</p>
+                <a href="solar_graphs.html" class="button">View Graphs</a>
+            </div>
+            <div class="feature-item">
+                <h2>Specifications</h2>
+                <p>Learn more about the solar panels, inverters, and environmental data used in our calculations.</p>
+                <a href="solar_specs.html" class="button">View Specifications</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
