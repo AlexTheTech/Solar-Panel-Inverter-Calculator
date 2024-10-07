@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Analysis - Solar Investment</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                });
+        });
+    </script>
+
+    <div class="container">
+        <h1>Financial Analysis of Solar Investment</h1>
+        <p>Calculate your financial returns, including payback period, annual savings, and return on investment (ROI) for your solar installation.</p>
+
+        <div class="input-group">
+            <label for="system-cost">System Cost ($)</label>
+            <input type="number" id="system-cost" name="system-cost" value="15000" required min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="incentive">Incentive Amount ($)</label>
+            <input type="number" id="incentive" name="incentive" value="3000" required min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="energy-rate">Energy Rate ($ per kWh)</label>
+            <input type="number" id="energy-rate" name="energy-rate" value="0.25" required min="0" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="annual-production">Annual Energy Production (kWh)</label>
+            <input type="number" id="annual-production" name="annual-production" value="8000" required min="0">
+        </div>
+
+        <button type="button" id="calculate-financial" class="button">Calculate Financial Metrics</button>
+
+        <!-- Output Section -->
+        <div id="output" class="output">
+            <h2>Results</h2>
+            <p id="total-investment">Total Investment Cost: </p>
+            <p id="annual-savings">Annual Savings: </p>
+            <p id="payback-period">Payback Period: </p>
+            <p id="roi">Return on Investment (ROI): </p>
+        </div>
+
+        <!-- Payback Chart -->
+        <h2>Cumulative Savings and Payback Period</h2>
+        <canvas id="paybackChart" width="400" height="200"></canvas>
+
+        <!-- Explanation Section -->
+        <div class="output">
+            <h2>Understanding the Financial Analysis</h2>
+            <p>This financial analysis helps you understand the economic impact of installing a solar power system. By entering the values below, you can estimate how long it will take to recover your initial investment and calculate your annual savings.</p>
+            <ul>
+                <li><strong>System Cost ($):</strong> This is the total cost of purchasing and installing the solar panel system. It includes all equipment, labor, and other associated expenses.</li>
+                <li><strong>Incentive Amount ($):</strong> Many regions offer incentives, rebates, or subsidies to help offset the cost of solar installations. Enter the value of any financial incentives you receive here.</li>
+                <li><strong>Energy Rate ($ per kWh):</strong> This is the rate you pay for electricity. It will be used to calculate how much money you save based on the amount of energy your solar panels produce.</li>
+                <li><strong>Annual Energy Production (kWh):</strong> This value represents the total amount of electricity your solar panels generate each year. It is an important factor in calculating your savings.</li>
+            </ul>
+            <p>The financial metrics calculated include:</p>
+            <ul>
+                <li><strong>Total Investment Cost:</strong> This is the cost of the system after subtracting any incentives. It represents the actual amount of money you are investing in your solar power system.</li>
+                <li><strong>Annual Savings:</strong> This is the amount of money you save each year by generating your own electricity rather than purchasing it from the grid. It is calculated based on the energy rate and the amount of energy your panels produce.</li>
+                <li><strong>Payback Period:</strong> The payback period tells you how many years it will take to recover your initial investment from the annual savings. A shorter payback period indicates a quicker return on your investment.</li>
+                <li><strong>Return on Investment (ROI):</strong> The ROI is a percentage that indicates the profitability of your solar investment. A higher ROI means a better financial return over time.</li>
+            </ul>
+            <p>Understanding these metrics helps you evaluate whether investing in a solar energy system is financially beneficial for you and provides insight into the long-term economic gains from renewable energy.</p>
+        </div>
+    </div>
+
+    <!-- Load financial analysis script -->
+    <script src="financial_analysis.js"></script>
+</body>
+</html>

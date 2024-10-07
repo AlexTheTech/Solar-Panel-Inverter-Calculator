@@ -192,6 +192,33 @@ table caption {
     border-left: 4px solid #e67e22;
 }
 
+/* Input Group Styling */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    color: #d35400;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #e67e22;
+    outline: none;
+    box-shadow: 0 0 8px rgba(230, 126, 34, 0.5);
+}
+
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .container {
@@ -293,9 +320,4 @@ body::after {
     50% {
         transform: scale(1.2);
     }
-
-
-
-
-
 }
