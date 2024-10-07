@@ -78,13 +78,35 @@ document.getElementById("calculate-button").addEventListener("click", () => {
     // Calculate Number of Panels Required to Meet Target Daily Energy Production
     const numberOfPanels = Math.ceil(dailyEnergyRequirement / panelDailyOutput);
 
-    // Calculate Number of Inverters Required
-    const totalArrayPowerDC = numberOfPanels * panel.power / 1000; // Convert to kW
-    const invertersRequired = Math.ceil(totalArrayPowerDC / 2.8); // Considering inverter capacity (Xantrex GT2.8 rated at 2.8 kW)
+    // Calculate Panel Configuration Using Sequential Assignment Logic
+    let remainingPanels = numberOfPanels;
+    let inverterCount = 0;
+    let configurations = [];
+
+    // Loop through and assign panels to inverters until all panels are used up
+    while (remainingPanels > 0) {
+        inverterCount++;
+        let panelsForThisInverter = Math.min(remainingPanels, 16); // Assign up to 16 panels per inverter
+        remainingPanels -= panelsForThisInverter;
+
+        configurations.push({
+            inverter: inverterCount,
+            panels: panelsForThisInverter
+        });
+    }
+
+    // Construct panel configuration string
+    let configurationHtml = configurations.map(config => `
+        <div class="configuration-item">
+            <h3>Inverter ${config.inverter}</h3>
+            <p>${config.panels} Panels</p>
+        </div>
+    `).join('');
 
     // Update the DOM with the results
     document.getElementById("panels-required").textContent = `Number of Panels Required: ${numberOfPanels}`;
-    document.getElementById("inverters-required").textContent = `Number of Inverters Required: ${invertersRequired}`;
+    document.getElementById("inverters-required").textContent = `Number of Inverters Required: ${inverterCount}`;
+    document.getElementById("configuration").innerHTML = configurationHtml;
     document.getElementById("estimated-power").textContent = `Average Daily Power Production per Panel: ${panelDailyOutput.toFixed(2)} kWh`;
 
     // Store the monthly energy values for the chart

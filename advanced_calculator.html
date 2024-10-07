@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Solar Panel & Inverter Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #f7e6a2, #f0c929);
+        color: #333;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
+
+    .container {
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        max-width: 800px;
+        width: 90%;
+        margin-top: 140px;
+        position: relative;
+    }
+
+    h1 {
+        text-align: center;
+        color: #e67e22;
+        margin-bottom: 30px;
+        font-weight: bold;
+        font-size: 36px;
+    }
+
+    label {
+        display: block;
+        margin: 15px 0 5px;
+        font-weight: bold;
+        color: #d35400;
+    }
+
+    input, select {
+        width: calc(100% - 20px);
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background-color: #e67e22;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #d35400;
+    }
+
+    .output {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .output p {
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 10px;
+        padding: 10px;
+        background: #fdf2e9;
+        border-radius: 8px;
+        border-left: 4px solid #e67e22;
+    }
+
+    .configuration-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+        padding-left: 0;
+        margin-top: 20px;
+    }
+
+    .configuration-item {
+        background: #fff4e6;
+        padding: 20px;
+        border-radius: 12px;
+        border: 2px solid #e67e22;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 150px;
+    }
+
+    .configuration-item h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        color: #d35400;
+    }
+
+    .configuration-item p {
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+    }
+
+    canvas {
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        label, input, select, button {
+            font-size: 14px;
+        }
+    }
+</style>
+<body>
+    <div id="navbar-placeholder"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('navbar.html')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Network response was not ok: ${response.statusText}`);
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('navbar-placeholder').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('There has been a problem with loading the navbar:', error);
+                    document.getElementById('navbar-placeholder').innerHTML = '<p style="color: red;">Failed to load navbar.</p>';
+                });
+        });
+    </script>
+
+    <div class="container">
+        <h1>Advanced Solar Panel & Inverter Calculator</h1>
+        <form id="advanced-solar-form">
+            <!-- Input for Target Yearly Energy Production -->
+            <div class="input-group">
+                <label for="energy-production">Target Yearly Energy Production (kWh)</label>
+                <input type="number" id="energy-production" name="energy-production" required min="0">
+            </div>
+
+            <!-- Panel Type Selection -->
+            <div class="input-group">
+                <label for="panel-type">Select Panel Type</label>
+                <select id="panel-type" name="panel-type" required>
+                    <option value="SLX170">SLX170</option>
+                    <option value="SLX175">SLX175</option>
+                    <option value="SLX180">SLX180</option>
+                </select>
+            </div>
+
+            <!-- Dirt and Mismatch Loss Percentage -->
+            <div class="input-group">
+                <label for="dirt-loss">Efficiency Loss due to Dirt & Mismatch (%)</label>
+                <input type="number" id="dirt-loss" name="dirt-loss" required min="0" max="100" step="0.1">
+            </div>
+
+            <!-- Temperature Coefficient -->
+            <div class="input-group">
+                <label for="temperature-coefficient">Temperature Coefficient (%/°C)</label>
+                <input type="number" id="temperature-coefficient" name="temperature-coefficient" required step="0.0001">
+            </div>
+
+            <!-- Tilt Option Selection -->
+            <div class="input-group">
+                <label for="tilt-option">Select Tilt Angle</label>
+                <select id="tilt-option" name="tilt-option" required>
+                    <option value="0">0° (Horizontal)</option>
+                    <option value="30">30° Tilt</option>
+                </select>
+            </div>
+
+            <!-- Cable Loss Percentage -->
+            <div class="input-group">
+                <label for="cable-loss">Cable Loss Percentage (%)</label>
+                <input type="number" id="cable-loss" name="cable-loss" required min="0" max="100" step="0.1">
+            </div>
+
+            <!-- Inverter Efficiency -->
+            <div class="input-group">
+                <label for="inverter-efficiency">Inverter Efficiency (%)</label>
+                <input type="number" id="inverter-efficiency" name="inverter-efficiency" required min="0" max="100" step="0.1">
+            </div>
+
+            <!-- Calculate Button -->
+            <div class="input-group">
+                <button type="button" id="advanced-calculate-button">Calculate</button>
+            </div>
+        </form>
+
+        <!-- Output Section -->
+        <div id="output" class="output">
+            <h2>Results</h2>
+            <p id="panels-required">Number of Panels Required: </p>
+            <p id="inverters-required">Number of Inverters Required: </p>
+            <div id="configuration" class="configuration-list"></div>
+            <p id="estimated-power">Estimated Daily Power Production per Panel: </p>
+
+            <!-- Graph for Monthly Power Delivery -->
+            <h2>Monthly Power Delivery (kWh)</h2>
+            <canvas id="monthlyPowerChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <!-- Load Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="advanced_script.js"></script>
+</body>
+</html>

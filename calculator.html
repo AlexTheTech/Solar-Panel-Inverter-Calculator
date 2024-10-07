@@ -90,6 +90,37 @@
             border-left: 4px solid #e67e22;
         }
 
+        .configuration-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        .configuration-item {
+            background: #fff4e6;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e67e22;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 150px;
+        }
+
+        .configuration-item h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #d35400;
+        }
+
+        .configuration-item p {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
         canvas {
             margin-top: 20px;
         }
@@ -169,6 +200,7 @@
             <h2>Results</h2>
             <p id="panels-required">Number of Panels Required: </p>
             <p id="inverters-required">Number of Inverters Required: </p>
+            <div id="configuration" class="configuration-list"></div>
             <p id="estimated-power">Estimated Daily Power Production per Panel: </p>
 
             <!-- Graph for Monthly Power Delivery -->

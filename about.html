@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our Solar PV System Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          fetch('navbar.html')
+              .then(response => {
+                  if (!response.ok) {
+                      throw new Error(`Network response was not ok: ${response.statusText}`);
+                  }
+                  return response.text();
+              })
+              .then(data => {
+                  document.getElementById('navbar-placeholder').innerHTML = data;
+              })
+              .catch(error => {
+                  console.error('There has been a problem with loading the navbar:', error);
+                  document.getElementById('navbar-placeholder').innerHTML = '<p style="color: red;">Failed to load navbar.</p>';
+              });
+      });
+  </script>
+    <div class="container">
+        <h1>About Our Solar PV System Calculator</h1>
+        <p>Welcome to our Solar PV System Calculator, an innovative tool designed to help you easily plan and design solar photovoltaic systems for your energy needs. This calculator is part of a project aimed at responding to a recent tender from Bunnings' Essendon warehouse, which is seeking to install a rooftop solar PV array that displaces 10,000 kWh/year of grid electricity. Our calculator offers a streamlined and user-friendly way to determine the optimal solar panel configuration, inverter requirements, and overall system design.</p>
+
+        <h2>Our Purpose</h2>
+        <p>Our goal is to make renewable energy more accessible by automating the solar design process. Whether you are a PV system engineering professional or simply interested in understanding solar energy better, our tool offers an intuitive interface for calculating panel requirements, energy yields, and cost benefits. The calculator supports SLX175 solar panels and Xantrex 2.8 kW inverters, providing detailed insights into the necessary components to meet specific energy needs.</p>
+
+        <h2>What We Offer</h2>
+        <ul>
+            <li><strong>Advanced Calculations</strong>: Our calculator allows users to input detailed parameters like inverter efficiency, cable losses, temperature coefficients, and more, ensuring that you get precise and personalized results for your PV system.</li>
+            <li><strong>Detailed System Design</strong>: The tool automates the process of determining the number of panels needed, their configuration, and the expected energy production throughout the year, helping you make informed decisions.</li>
+            <li><strong>Comprehensive Insights</strong>: You can explore different system designs by adjusting tilt angles, insolation values, and other variables, allowing you to evaluate the environmental and economic impacts of various setups.</li>
+        </ul>
+
+        <h2>Project Background</h2>
+        <p>This calculator was developed as part of a practical assessment for the NEF4205 - Sustainable Energy Systems course. Our mission was to create a reliable and precise tool to help businesses like Bunnings adopt sustainable energy solutions. This project aligns with the principles outlined in the Australian Standards AS 4777 and AS/NZS 3000, ensuring compliance with grid connection requirements and electrical installation standards.</p>
+
+        <h2>Why Solar Energy?</h2>
+        <p>Solar energy is a clean and renewable source of power that can significantly reduce greenhouse gas emissions and lower electricity costs. By providing an easy-to-use tool to plan and design solar PV systems, we aim to promote the adoption of solar energy in commercial and residential sectors, making a positive impact on both the environment and the economy.</p>
+
+        <p>Thank you for visiting our Solar PV System Calculator. We hope this tool helps you make the switch to clean, sustainable energy with ease. If you have any questions or need further assistance, feel free to reach out!</p>
+    </div>
+    <footer style="padding: 20px; background-color: #2980b9; color: #ffffff; text-align: center; width: 100%; box-sizing: border-box;">
+        <p>This website was created by two VU students, Alexander Piccinelli and Sima Vivaldi.</p>
+    </footer>
+</body>
+</html>
+</body>
+</html>
